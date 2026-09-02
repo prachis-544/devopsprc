@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+
+    <style>
+        form {
+            width: 300px;
+            margin: auto;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        input[type="submit"] {
+            width: auto;
+        }
+
+        #msg {
+            text-align: center;
+            color: green;
+        }
+       h2{
+          text-align: center;
+       }
+    </style>
+
+    <script>
+        function validateForm() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let event = document.getElementById("event").value;
+
+            if (name == "" || email == "" || phone == "" || event == "") {
+                alert("Please fill all fields");
+                return false;
+            }
+
+            if (phone.length != 10 || isNaN(phone)) {
+                alert("Enter a valid 10-digit phone number");
+                return false;
+            }
+
+            document.getElementById("msg").innerHTML =
+                "Thank you for registering!";
+
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+
+    <h2>User Registration Form</h2>
+
+    <form onsubmit="return validateForm()">
+
+        Name:
+        <input type="text" id="name" placeholder="Name">
+
+        Email:
+        <input type="email" id="email" placeholder="Email">
+
+        Phone:
+        <input type="text" id="phone" placeholder="Phone Number">
+
+        Event:
+        <select id="event">
+            <option value="">Select Event</option>
+            <option>Workshop</option>
+            <option>Hackathon</option>
+            <option>Seminar</option>
+        </select>
+
+        <input type="submit" value="Register">
+
+    </form>
+
+    <h3 id="msg"></h3>
+
+</body>
+</html>
