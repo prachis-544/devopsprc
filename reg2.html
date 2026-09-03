@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<body style="display:flex; justify-content:center; align-items:center; height:100vh; background-color:yellow;">
+<form id="myform" onsubmit="validateForm(event)">
+<h2>Registration form</h2>
+<label>Name:</label><br>
+<input type="text" id="name" required><br><br>
+<label>Email:</label><br>
+<input type="email" id="email" required><br><br>
+<label>Gender:</label><br>
+<select id="gender" required>
+<option value="">Select</option>
+<option value="Female">Female</option>
+<option value="Male">Male</option>
+<option value="Others">Others</option>
+</select><br><br>
+<label>Father Name:</label><br>
+<input type="text" id="fname" required><br><br>
+<label>Mother Name:</label><br>
+<input type="text" id="mname" required><br><br>
+<label>Phone (10 digits):</label><br>
+<input type="number" id="phone" required><br><br>
+<label>Branch:</label><br>
+<select id="branch" required>
+<option value="">Select</option>
+<option value="CSE">CSE</option>
+<option value="ECE">ECE</option>
+</select><br><br>
+<label>Roll number:</label><br>
+<input type="text" id="roll" required><br><br>
+<button type="submit">Submit</button>
+</form>
+<p id="message" style="position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:green; font-size:20px; font-weight:bold;"></p>
+<script>
+function validateForm(event){
+event.preventDefault();
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let phone=document.getElementById("phone").value;
+let roll=document.getElementById("roll").value;
+let fname=document.getElementById("fname").value;
+let mname=document.getElementById("mname").value;
+if(parseInt(name)>=0||!/^[A-Za-z ]+$/.test(name)){
+alert("Name can't be empty/no numbers.");
+return;
+}
+if(email.indexOf("@")==-1||email.indexOf(".")==-1){
+alert("@ must contain and .com");
+return;
+}
+if(parseInt(fname)>=0||!/^[A-Za-z ]+$/.test(fname)){
+alert("Father name can't be empty/no numbers.");
+return;
+}
+if(parseInt(mname)>=0||!/^[A-Za-z ]+$/.test(mname)){
+alert("Mother name can't be empty/no numbers.");
+return;
+}
+if(phone.length!=10){
+alert("Phone number must be 10 digits");
+return;
+}
+if(roll.length==0){
+alert("Roll number cannot be empty.");
+return;
+}
+document.getElementById("message").innerHTML = "Thanks for registering!";
+}
+</script>
+</body>
+</html>
